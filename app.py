@@ -126,7 +126,7 @@ def index():
             status = "No Profit No Loss"
             action = "Wait"
             action_color = "red"
-        elif current_price > average_price:
+        elif purchase_price < current_price and current_price > average_price:
             profit = int((current_price - purchase_price) * quantity * 1.5)
             color = "green"
             status = f"Profit: {profit}"
