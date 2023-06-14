@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Khushan Stocks</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #36393F;
+            color: #FFF;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #7289DA;
+            font-weight: bold;
+        }
+
+        .profit {
+            color: #43B581;
+        }
+
+        .loss {
+            color: #F04747;
+        }
+
+        .sell {
+            color: #F04747;
+            font-weight: bold;
+        }
+
+        .buy {
+            color: #43B581;
+            font-weight: bold;
+        }
+
+        .total {
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #2C2F33;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            table {
+                font-size: 10px;
+            }
+            th, td {
+                padding: 8px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Information</h1>
+        <table>
+            <tr>
+                <th>Stock</th>
+                <th>Purchase Price</th>
+                <th>Quantity</th>
+                <th>Average Price</th>
+                <th>Current Price</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Invested Amount</th>
+                <th>Current Amount</th>
+            </tr>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.stock }}</td>
+                <td>{{ stock.purchase_price }}</td>
+                <td>{{ stock.quantity }}</td>
+                <td>{{ stock.average_price }}</td>
+                <td>{{ stock.current_price }}</td>
+                <td style="color:{{ stock.color }}">{{ stock.status }}</td>
+                <td style="color:{{ stock.action_color }}">{{ stock.action }}</td>
+                <td>{{ stock.invested_amount }}</td>
+                <td>{{ stock.current_amount }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td class="total" colspan="7">Total Invested Amount:</td>
+                <td class="total">{{ total_invested_amount }}</td>
+                <td class="total">{{ total_current_amount }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
